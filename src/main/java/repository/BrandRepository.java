@@ -72,4 +72,15 @@ public class BrandRepository {
 
     }
 
+    public Brand edit(Brand brand) throws SQLException {
+        String editBrand = "UPDATE brand SET name = ? , website =? ,description =? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(editBrand);
+        preparedStatement.setString(1, brand.getName());
+        preparedStatement.setString(2, brand.getWebsite());
+        preparedStatement.setString(3, brand.getDescription());
+        preparedStatement.setInt(4, brand.getId());
+        preparedStatement.executeUpdate();
+        return brand;
+    }
+
 }
