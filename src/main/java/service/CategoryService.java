@@ -51,4 +51,13 @@ public class CategoryService {
         System.out.println(category);
 
     }
+
+    public void delete() throws SQLException {
+
+        System.out.println("enter id that you want delete :");
+        int id = scanner.nextInt();
+        Category category = load(id);
+        categoryRepository.delete(category);
+        System.out.println(category);
+    }
 }
