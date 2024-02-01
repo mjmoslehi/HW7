@@ -1,7 +1,9 @@
 package service;
 
+import model.Category;
 import repository.CategoryRepository;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CategoryService {
@@ -11,4 +13,19 @@ public class CategoryService {
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
+
+    public void register() throws SQLException {
+
+        System.out.println("category name :");
+        String name = scanner.next();
+
+        System.out.println("category description :");
+        String description = scanner.next();
+
+        Category category = new Category(name, description);
+        categoryRepository.register(category);
+        System.out.println(category);
+    }
+
+
 }
