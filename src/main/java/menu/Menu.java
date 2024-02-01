@@ -61,7 +61,7 @@ public class Menu {
                 case 12 -> deleteCategory();
                 case 13 -> deleteProduct();
                 case 14 -> deleteShareholder();
-                case 15 -> deleteShareholderBrand():
+                case 15 -> deleteShareholderBrand();
                 default -> System.out.println("doesn't exist");
             }
         } while (!check);
