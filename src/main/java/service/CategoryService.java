@@ -60,4 +60,8 @@ public class CategoryService {
         categoryRepository.delete(category);
         System.out.println(category);
     }
+
+    public Category[] loadAll () throws SQLException{
+        return categoryRepository.loadAllCategory();
+    }
 }
