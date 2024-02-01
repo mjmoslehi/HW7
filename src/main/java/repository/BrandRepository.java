@@ -53,4 +53,23 @@ public class BrandRepository {
         }
         return brands;
     }
+
+    public Brand load (int brandId) throws SQLException{
+
+        String loadBrand = "SELECT * FROM brand WHERE id =?";
+        PreparedStatement preparedStatement = connection.prepareStatement(loadBrand );
+        preparedStatement.setInt(1,brandId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()){
+            int id = resultSet.getInt("id");
+            String name =resultSet.getString("name");
+            String website = resultSet.getString("website");
+            String description = resultSet.getString("description");
+            Brand brand = new Brand(id , name , website , description);
+            return brand;
+        }else return null;
+
+    }
+
 }
