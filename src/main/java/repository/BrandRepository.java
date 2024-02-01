@@ -83,4 +83,17 @@ public class BrandRepository {
         return brand;
     }
 
+    public int check ()throws SQLException{
+        String checkBrand="SELECT * FROM brand ";
+        PreparedStatement preparedStatement = connection.prepareStatement(checkBrand,
+                ResultSet.TYPE_SCROLL_SENSITIVE ,
+                ResultSet.TYPE_SCROLL_INSENSITIVE);
+        ResultSet resultSet =preparedStatement.executeQuery();
+        int count =0;
+        resultSet.beforeFirst();
+        if (resultSet.next()) count++;
+        return count;
+
+    }
+
 }
