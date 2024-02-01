@@ -69,4 +69,13 @@ public class BrandService {
         System.out.println(brand);
 
     }
+
+    public void delete() throws SQLException {
+
+        System.out.println("enter id that you want delete :");
+        int id = scanner.nextInt();
+        Brand brand = load(id);
+        brandRepository.delete(brand);
+        System.out.println(brand);
+    }
 }
