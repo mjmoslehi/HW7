@@ -54,6 +54,14 @@ public class BrandRepository {
         return brands;
     }
 
+    public Brand delete(Brand brand) throws SQLException {
+        String deleteBrand = "DELETE FROM brand WHERE id = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteBrand);
+        preparedStatement.setInt(1, brand.getId());
+        preparedStatement.executeUpdate();
+        return brand;
+    }
+
     public Brand load (int brandId) throws SQLException{
 
         String loadBrand = "SELECT * FROM brand WHERE id =?";
