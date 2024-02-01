@@ -62,4 +62,21 @@ public class CategoryRepository {
         return category;
     }
 
+    public Category load (int categoryId) throws SQLException{
+
+        String loadCategory = "SELECT * FROM category WHERE id =?";
+        PreparedStatement preparedStatement = connection.prepareStatement(loadCategory);
+        preparedStatement.setInt(1,categoryId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()){
+            int id = resultSet.getInt("id");
+            String name =resultSet.getString("name");
+            String description = resultSet.getString("description");
+            Category category = new Category(id , name , description);
+            return category;
+        }else return null;
+
+    }
+
 }
