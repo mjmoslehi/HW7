@@ -78,4 +78,9 @@ public class BrandService {
         brandRepository.delete(brand);
         System.out.println(brand);
     }
+
+
+    public Brand[] loadAll () throws SQLException{
+        return brandRepository.loadAllBrand();
+    }
 }
