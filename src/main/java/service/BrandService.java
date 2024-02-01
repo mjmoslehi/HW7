@@ -30,13 +30,13 @@ public class BrandService {
         System.out.println(brand);
     }
 
-    private String getBrandWebsite(){
+    private String getBrandWebsite() {
 
         String website;
-        while (true){
+        while (true) {
             System.out.println("enter brand website :");
-            website=scanner.nextLine();
-            if (Validation.isValidWebsite(website))break;
+            website = scanner.nextLine();
+            if (Validation.isValidWebsite(website)) break;
             else System.out.println("website is not valid");
         }
         return website;
@@ -80,7 +80,11 @@ public class BrandService {
     }
 
 
-    public Brand[] loadAll () throws SQLException{
+    public Brand[] loadAll() throws SQLException {
         return brandRepository.loadAllBrand();
+    }
+
+    public int check() throws SQLException {
+        return brandRepository.check();
     }
 }
