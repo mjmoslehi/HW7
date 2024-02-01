@@ -1,5 +1,6 @@
 package utility;
 
+import connection.JdbcConnection;
 import repository.*;
 import service.*;
 
@@ -21,4 +22,23 @@ public class ApplicationContext {
     private static final Shareholder_brandService SHAREHOLDER_BRAND_SERVICE;
     private static final ShareholderService SHAREHOLDER_SERVICE;
     private static final UserService USER_SERVICE;
+
+    static {
+        CONNECTION = JdbcConnection.getConnection();
+
+        BRAND_REPOSITORY =new BrandRepository(CONNECTION);
+        CATEGORY_REPOSITORY =new CategoryRepository(CONNECTION);
+        PRODUCT_REPOSITORY =new ProductRepository(CONNECTION);
+        SHAREHOLDER_BRAND_REPOSITORY =new Shareholder_brandRepository(CONNECTION);
+        SHAREHOLDER_REPOSITORY =new ShareholderRepository(CONNECTION);
+        USER_REPOSITORY = new UserRepository(CONNECTION);
+
+        BRAND_SERVICE = new BrandService(BRAND_REPOSITORY);
+        CATEGORY_SERVICE =new CategoryService(CATEGORY_REPOSITORY);
+        PRODUCT_SERVICE =new ProductService(PRODUCT_REPOSITORY);
+        SHAREHOLDER_BRAND_SERVICE = new Shareholder_brandService(SHAREHOLDER_BRAND_REPOSITORY);
+        SHAREHOLDER_SERVICE = new ShareholderService(SHAREHOLDER_REPOSITORY);
+        USER_SERVICE = new UserService(USER_REPOSITORY);
+
+    }
 }
