@@ -22,4 +22,12 @@ public class ProductRepository {
         preparedStatement.setInt(4,product.getBrandId());
         return preparedStatement.executeUpdate();
     }
+
+    public Product delete(Product product) throws SQLException {
+        String deleteProduct = "DELETE FROM product WHERE id = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteProduct);
+        preparedStatement.setInt(1, product.getId());
+        preparedStatement.executeUpdate();
+        return product;
+    }
 }
