@@ -41,4 +41,11 @@ public class ApplicationContext {
         USER_SERVICE = new UserService(USER_REPOSITORY);
 
     }
+
+    public static BrandService getBrandService(){return BRAND_SERVICE;}
+    public static CategoryService getCategoryService(){return CATEGORY_SERVICE;}
+    public static ProductService getProductService(){return PRODUCT_SERVICE;}
+    public static Shareholder_brandService getShareholderBrandService(){return SHAREHOLDER_BRAND_SERVICE;}
+    public static ShareholderService getShareholderService(){return SHAREHOLDER_SERVICE;}
+    public static UserService getUserService() {return USER_SERVICE;}
 }
