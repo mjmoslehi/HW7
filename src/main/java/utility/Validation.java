@@ -1,5 +1,6 @@
 package utility;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -20,5 +21,26 @@ public class Validation {
         SHAREHOLDER_PHONE_NUMBER_PATTERN =Pattern.compile("(0|\\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]" +
                 "([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}");
         SHAREHOLDER_NATIONAL_CODE_PATTERN =Pattern.compile("[0-9]{10}");
+    }
+
+    public static boolean isValidEmail(String email){
+        Matcher matcher = USER_EMAIL_PATTERN.matcher(email);
+        return matcher.find();
+    }
+    public static boolean isValidPassword (String password){
+        Matcher matcher = USER_PASSWORD_PATTERN.matcher(password);
+        return matcher.find();
+    }
+    public static boolean isValidWebsite (String website){
+        Matcher matcher = BRAND_WEBSITE_PATTERN.matcher(website);
+        return matcher.find();
+    }
+    public static boolean isValidPhoneNumber (String phoneNumber){
+        Matcher matcher = SHAREHOLDER_PHONE_NUMBER_PATTERN.matcher(phoneNumber);
+        return matcher.find();
+    }
+    public static boolean isValidNationalCode (String nationalCode){
+        Matcher matcher = SHAREHOLDER_NATIONAL_CODE_PATTERN.matcher(nationalCode);
+        return matcher.find();
     }
 }
