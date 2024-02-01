@@ -12,3 +12,10 @@ CREATE table if not exists brand
     website     varchar,
     description varchar
 );
+create table if not exists shareholder_brand
+(
+    id_shareholder integer,
+    id_brand       integer,
+    foreign key (id_shareholder) references shareholder (id),
+    foreign key (id_brand) references brand (id)
+);
