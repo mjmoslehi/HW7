@@ -39,3 +39,12 @@ create table if not exists product
     foreign key (category_id) references category (id),
     foreign key (brand_id) references brand (id)
 );
+
+CREATE TABLE IF NOT EXISTS users
+(
+    id       serial primary key,
+    name     varchar,
+    username varchar unique ,
+    email    varchar unique ,
+    password varchar
+);
