@@ -52,4 +52,16 @@ public class ShareholderRepository {
 
         }else return null;
     }
+
+    public Shareholder edit(Shareholder shareholder) throws SQLException {
+
+        String editShareholder = "UPDATE shareholder SET name = ?, phone_number =?, national_code =? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(editShareholder);
+        preparedStatement.setString(1, shareholder.getName());
+        preparedStatement.setString(2,shareholder.getPhoneNumber());
+        preparedStatement.setString(3,shareholder.getNationalCode());
+        preparedStatement.setInt(4,shareholder.getId());
+        preparedStatement.executeUpdate();
+        return shareholder;
+    }
 }
