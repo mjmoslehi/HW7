@@ -64,4 +64,8 @@ public class CategoryService {
     public Category[] loadAll () throws SQLException{
         return categoryRepository.loadAllCategory();
     }
+
+    public int check () throws SQLException{
+        return categoryRepository.check();
+    }
 }
