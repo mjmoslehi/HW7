@@ -1,6 +1,5 @@
 package service;
 
-import model.Brand;
 import model.Shareholder_Brand;
 import repository.Shareholder_brandRepository;
 
@@ -31,4 +30,14 @@ public class Shareholder_brandService {
         Shareholder_Brand shareholderBrand = shareholderBrandRepository.load(id);
         return shareholderBrand;
     }
+
+    public void delete() throws SQLException {
+
+        System.out.println("enter id that you want delete :");
+        int id = scanner.nextInt();
+        Shareholder_Brand shareholderBrand = load(id);
+        shareholderBrandRepository.delete(shareholderBrand);
+        System.out.println(shareholderBrand);
+    }
+
 }
