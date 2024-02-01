@@ -53,4 +53,13 @@ public class CategoryRepository {
         return categories;
     }
 
+    public Category delete(Category category) throws SQLException {
+
+        String deleteCategory = "DELETE FROM brand WHERE id = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteCategory);
+        preparedStatement.setInt(1, category.getId());
+        preparedStatement.executeUpdate();
+        return category;
+    }
+
 }
