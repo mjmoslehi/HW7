@@ -16,6 +16,7 @@ CREATE table if not exists brand
 
 create table if not exists shareholder_brand
 (
+    id serial primary key ,
     id_shareholder integer,
     id_brand       integer,
     foreign key (id_shareholder) references shareholder (id),
