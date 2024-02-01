@@ -41,4 +41,9 @@ public class BrandService {
         }
         return website;
     }
+
+    private Brand load(int id) throws SQLException {
+        Brand brand = brandRepository.load(id);
+        return brand;
+    }
 }
