@@ -17,6 +17,14 @@ public class Shareholder_Brand {
         this.idBrand = idBrand;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getIdShareholder() {
         return idShareholder;
     }
