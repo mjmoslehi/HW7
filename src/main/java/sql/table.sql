@@ -28,3 +28,14 @@ create table if not exists category
     name        varchar unique ,
     description varchar
 );
+
+create table if not exists product
+(
+    id          serial primary key,
+    name        varchar,
+    create_date varchar,
+    category_id integer,
+    brand_id    integer,
+    foreign key (category_id) references category (id),
+    foreign key (brand_id) references brand (id)
+);
