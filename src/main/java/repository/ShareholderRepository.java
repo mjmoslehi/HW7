@@ -4,6 +4,7 @@ import model.Shareholder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ShareholderRepository {
@@ -31,5 +32,24 @@ public class ShareholderRepository {
         preparedStatement.setInt(1, shareholder.getId());
         preparedStatement.executeUpdate();
         return shareholder;
+    }
+
+    public Shareholder load (int shareholderId)throws SQLException{
+
+        String loadShareholder ="SELECT * FROM shareholder WHERE id =?";
+        PreparedStatement preparedStatement = connection.prepareStatement(loadShareholder);
+        preparedStatement.setInt(1,shareholderId);
+        ResultSet resultSet =preparedStatement.executeQuery();
+
+        if (resultSet.next()){
+
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            String phoneNumber = resultSet.getString("phone_number");
+            String nationalCode = resultSet.getString("national_code");
+            Shareholder shareholder =new Shareholder(id ,name , phoneNumber , nationalCode);
+            return shareholder;
+
+        }else return null;
     }
 }
