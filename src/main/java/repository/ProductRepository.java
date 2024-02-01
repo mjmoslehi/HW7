@@ -45,4 +45,16 @@ public class ProductRepository {
             return product;
         }else return null;
     }
+
+    public Product edit(Product product) throws SQLException {
+        String editProduct = "UPDATE product SET name = ?, create_date =?, category_id =?, brand_id =? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(editProduct);
+        preparedStatement.setString(1, product.getName());
+        preparedStatement.setDate(2,product.getCreateDate());
+        preparedStatement.setInt(3,product.getCategoryId());
+        preparedStatement.setInt(4,product.getBrandId());
+        preparedStatement.setInt(5, product.getId());
+        preparedStatement.executeUpdate();
+        return product;
+    }
 }
