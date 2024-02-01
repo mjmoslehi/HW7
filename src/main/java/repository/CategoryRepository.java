@@ -79,4 +79,14 @@ public class CategoryRepository {
 
     }
 
+    public Category edit(Category category) throws SQLException {
+        String editCategory = "UPDATE brand SET name = ? ,description =? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(editCategory);
+        preparedStatement.setString(1, category.getName());
+        preparedStatement.setString(2, category.getDescription());
+        preparedStatement.setInt(3, category.getId());
+        preparedStatement.executeUpdate();
+        return category;
+    }
+
 }
