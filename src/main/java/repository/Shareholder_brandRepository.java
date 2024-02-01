@@ -20,4 +20,12 @@ public class Shareholder_brandRepository {
         preparedStatement.setInt(2,shareholderBrand.getIdBrand());
         return preparedStatement.executeUpdate();
     }
+
+    public Shareholder_Brand delete(Shareholder_Brand shareholderBrand)throws SQLException{
+        String deleteShareholderBrand ="DELETE FROM shareholder_brand WHERE id = ?";
+        PreparedStatement preparedStatement =connection.prepareStatement(deleteShareholderBrand);
+        preparedStatement.setInt(1,shareholderBrand.getId());
+        preparedStatement.executeUpdate();
+        return shareholderBrand;
+    }
 }
