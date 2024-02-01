@@ -2,6 +2,7 @@ package service;
 
 import model.Brand;
 import repository.BrandRepository;
+import utility.Validation;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -27,5 +28,17 @@ public class BrandService {
         Brand brand = new Brand(name, website, description);
         brandRepository.registerBrand(brand);
         System.out.println(brand);
+    }
+
+    private String getBrandWebsite(){
+
+        String website;
+        while (true){
+            System.out.println("enter brand website :");
+            website=scanner.nextLine();
+            if (Validation.isValidWebsite(website))break;
+            else System.out.println("website is not valid");
+        }
+        return website;
     }
 }
