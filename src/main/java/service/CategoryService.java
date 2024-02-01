@@ -28,4 +28,8 @@ public class CategoryService {
     }
 
 
+    private Category load(int id) throws SQLException {
+        Category category = categoryRepository.load(id);
+        return category;
+    }
 }
