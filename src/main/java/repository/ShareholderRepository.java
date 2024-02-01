@@ -23,4 +23,13 @@ public class ShareholderRepository {
         preparedStatement.setString(3,shareholder.getNationalCode());
         return preparedStatement.executeUpdate();
     }
+
+    public Shareholder delete(Shareholder shareholder) throws SQLException {
+
+        String deleteShareholder = "DELETE FROM shareholder WHERE id = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteShareholder);
+        preparedStatement.setInt(1, shareholder.getId());
+        preparedStatement.executeUpdate();
+        return shareholder;
+    }
 }
