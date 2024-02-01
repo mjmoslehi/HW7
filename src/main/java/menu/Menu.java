@@ -36,6 +36,7 @@ public class Menu {
         System.out.println("12-delete category");
         System.out.println("13-delete product");
         System.out.println("14-delete shareholder");
+        System.out.println("15-delete shareholder and brand");
 
         boolean check = false;
         do {
@@ -60,6 +61,7 @@ public class Menu {
                 case 12 -> deleteCategory();
                 case 13 -> deleteProduct();
                 case 14 -> deleteShareholder();
+                case 15 -> deleteShareholderBrand():
                 default -> System.out.println("doesn't exist");
             }
         } while (!check);
@@ -155,4 +157,8 @@ public class Menu {
         shareholderService.delete();
     }
 
+    public void deleteShareholderBrand()throws SQLException{
+        System.out.println("shareholder and brand deleting");
+        shareholderBrandService.delete();
+    }
 }
