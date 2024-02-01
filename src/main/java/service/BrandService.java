@@ -46,4 +46,27 @@ public class BrandService {
         Brand brand = brandRepository.load(id);
         return brand;
     }
+
+    public void edit() throws SQLException {
+
+        System.out.println("edit brand id :");
+        int id = scanner.nextInt();
+        Brand brand = load(id);
+
+        System.out.println("edit brand name :");
+        String name = scanner.next();
+        brand.setName(name);
+
+        System.out.println("edit brand website :");
+        String website = scanner.next();
+        brand.setWebsite(website);
+
+        System.out.println("edit brand description :");
+        String description = scanner.next();
+        brand.setDescription(description);
+
+        brandRepository.edit(brand);
+        System.out.println(brand);
+
+    }
 }
