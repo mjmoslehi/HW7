@@ -1,5 +1,6 @@
 package service;
 
+import model.Brand;
 import model.Shareholder_Brand;
 import repository.Shareholder_brandRepository;
 
@@ -24,5 +25,10 @@ public class Shareholder_brandService {
         Shareholder_Brand shareholderBrand = new Shareholder_Brand(shareholderId,brandId);
         shareholderBrandRepository.register(shareholderBrand);
         System.out.println(shareholderBrand);
+    }
+
+    private Shareholder_Brand load(int id) throws SQLException {
+        Shareholder_Brand shareholderBrand = shareholderBrandRepository.load(id);
+        return shareholderBrand;
     }
 }
