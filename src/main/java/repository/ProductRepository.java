@@ -2,9 +2,7 @@ package repository;
 
 import model.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ProductRepository {
     private final Connection connection;
@@ -29,5 +27,22 @@ public class ProductRepository {
         preparedStatement.setInt(1, product.getId());
         preparedStatement.executeUpdate();
         return product;
+    }
+
+    public Product load(int productId)throws SQLException{
+        String loadProduct = "SELECT * FROM product WHERE id =?";
+        PreparedStatement preparedStatement = connection.prepareStatement(loadProduct);
+        preparedStatement.setInt(1,productId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()){
+            int id = resultSet.getInt("id");
+            String name =resultSet.getString("name");
+            Date createDate = resultSet.getDate("create_date");
+            int categoryId =resultSet.getInt("category_id");
+            int brandId = resultSet.getInt("brand_id");
+            Product product = new Product(id , name , createDate ,categoryId ,brandId);
+            return product;
+        }else return null;
     }
 }
