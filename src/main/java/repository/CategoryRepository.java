@@ -89,4 +89,17 @@ public class CategoryRepository {
         return category;
     }
 
+    public int check ()throws SQLException{
+        String checkCategory="SELECT * FROM category ";
+        PreparedStatement preparedStatement = connection.prepareStatement(checkCategory,
+                ResultSet.TYPE_SCROLL_SENSITIVE ,
+                ResultSet.TYPE_SCROLL_INSENSITIVE);
+        ResultSet resultSet =preparedStatement.executeQuery();
+        int count =0;
+        resultSet.beforeFirst();
+        if (resultSet.next()) count++;
+        return count;
+
+    }
+
 }
