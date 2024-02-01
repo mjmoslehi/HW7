@@ -2,6 +2,7 @@ package model;
 
 public class Shareholder_Brand {
 
+    private int id ;
     private int idShareholder;
     private int idBrand;
 
@@ -10,6 +11,11 @@ public class Shareholder_Brand {
         this.idBrand = idBrand;
     }
 
+    public Shareholder_Brand(int id, int idShareholder, int idBrand) {
+        this.id = id;
+        this.idShareholder = idShareholder;
+        this.idBrand = idBrand;
+    }
 
     public int getIdShareholder() {
         return idShareholder;
