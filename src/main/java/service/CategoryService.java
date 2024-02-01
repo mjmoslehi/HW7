@@ -32,4 +32,23 @@ public class CategoryService {
         Category category = categoryRepository.load(id);
         return category;
     }
+
+    public void edit() throws SQLException {
+
+        System.out.println("edit category id :");
+        int id = scanner.nextInt();
+        Category category = load(id);
+
+        System.out.println("edit category name :");
+        String name = scanner.next();
+        category.setName(name);
+
+        System.out.println("edit category description :");
+        String description = scanner.next();
+        category.setDescription(description);
+
+        categoryRepository.edit(category);
+        System.out.println(category);
+
+    }
 }
